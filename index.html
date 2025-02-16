@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дашборд киберрисков</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #2193b0;
+            --bg-color: #f5f6fa;
+            --text-color: #2c3e50;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--bg-color);
+            padding: 20px;
+            padding-left: 250px; /* Отступ для бокового меню */
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 70px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .metric-card {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 10px 0;
+        }
+
+        .metric-title {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .chart-container {
+            grid-column: span 2;
+        }
+
+        /* Новые стили для бокового меню */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 230px;
+            background: var(--primary-color);
+            color: white;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+            font-size: 12px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+
+        .nav-links svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Обновленные стили для карточек */
+        .strategy-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .strategy-card .metric-title {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .strategy-card .metric-value {
+            color: white;
+        }
+
+        .metric-card svg {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <h1>Кибербезопасность</h1>
+        </div>
+        <nav class="nav-links">
+            <a href="#dashboard">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"/>
+                    <rect x="14" y="3" width="7" height="7"/>
+                    <rect x="14" y="14" width="7" height="7"/>
+                    <rect x="3" y="14" width="7" height="7"/>
+                </svg>
+                Дашборд
+            </a>
+            <a href="#risks">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+                Риски
+            </a>
+            <a href="#strategy">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                </svg>
+                Стратегия
+            </a>
+            <a href="#reports">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+                Отчеты
+            </a>
+        </nav>
+    </aside>
+
+    <div class="dashboard">
+        <!-- Стратегические и финансовые метрики -->
+        <div class="card strategy-card metric-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <div class="metric-title">Бюджет безопасности</div>
+            <div class="metric-value">₽45.6M</div>
+        </div>
+
+        <div class="card strategy-card metric-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/>
+                <path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/>
+            </svg>
+            <div class="metric-title">ROI безопасности</div>
+            <div class="metric-value">267%</div>
+        </div>
+
+        <div class="card metric-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <div class="metric-title">Финансовые потери</div>
+            <div class="metric-value">₽15.2M</div>
+        </div>
+
+        <div class="card strategy-card metric-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+            <div class="metric-title">Compliance</div>
+            <div class="metric-value">89%</div>
+        </div>
+
+        <!-- Операционные метрики -->
+        <div class="card metric-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <div class="metric-title">Время реагирования</div>
+            <div class="metric-value">4.2ч</div>
+        </div>
+
+        <div class="card metric-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+            <div class="metric-title">Обучение персонала</div>
+            <div class="metric-value">76%</div>
+        </div>
+
+        <div class="card strategy-card metric-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+            <div class="metric-title">Эффективность защиты</div>
+            <div class="metric-value">94.2%</div>
+        </div>
+
+        <div class="card metric-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+            <div class="metric-title">Предотвращенные атаки</div>
+            <div class="metric-value">142</div>
+        </div>
+
+        <!-- Графики -->
+        <div class="card chart-container">
+            <canvas id="riskChart"></canvas>
+        </div>
+
+        <div class="card chart-container">
+            <canvas id="budgetChart"></canvas>
+        </div>
+
+        <div class="card chart-container">
+            <canvas id="complianceChart"></canvas>
+        </div>
+
+        <div class="card">
+            <canvas id="incidentsPieChart"></canvas>
+        </div>
+
+        <div class="card chart-container">
+            <canvas id="effectivenessChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Тестовые данные
+        const data = {
+            risks: {
+                labels: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн'],
+                values: [12, 19, 15, 25, 22, 30]
+            },
+            incidents: {
+                labels: ['DDoS', 'Фишинг', 'Вредоносное ПО', 'Утечка данных'],
+                values: [30, 25, 25, 20]
+            }
+        };
+
+        // Добавляем новые данные
+        const strategyData = {
+            compliance: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                values: [75, 82, 85, 89]
+            },
+            budget: {
+                labels: ['Инфраструктура', 'Персонал', 'Инструменты', 'Консалтинг'],
+                values: [40, 25, 20, 15]
+            }
+        };
+
+        // Добавляем новые данные
+        const securityData = {
+            training: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                values: [65, 72, 78, 85]
+            },
+            incidents: {
+                labels: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн'],
+                values: [15, 12, 8, 5, 7, 4]
+            },
+            effectiveness: {
+                labels: ['Сеть', 'Endpoint', 'Cloud', 'Email', 'Web'],
+                values: [95, 92, 88, 94, 91]
+            }
+        };
+
+        // График рисков
+        const riskCtx = document.getElementById('riskChart').getContext('2d');
+        new Chart(riskCtx, {
+            type: 'line',
+            data: {
+                labels: data.risks.labels,
+                datasets: [{
+                    label: 'Динамика рисков',
+                    data: data.risks.values,
+                    borderColor: '#3498db',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Динамика киберрисков'
+                    }
+                }
+            }
+        });
+
+        // Круговая диаграмма инцидентов
+        const incidentsCtx = document.getElementById('incidentsPieChart').getContext('2d');
+        new Chart(incidentsCtx, {
+            type: 'pie',
+            data: {
+                labels: data.incidents.labels,
+                datasets: [{
+                    data: data.incidents.values,
+                    backgroundColor: [
+                        '#e74c3c',
+                        '#2ecc71',
+                        '#f1c40f',
+                        '#9b59b6'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Распределение инцидентов'
+                    }
+                }
+            }
+        });
+
+        // График compliance
+        const complianceCtx = document.getElementById('complianceChart').getContext('2d');
+        new Chart(complianceCtx, {
+            type: 'bar',
+            data: {
+                labels: strategyData.compliance.labels,
+                datasets: [{
+                    label: 'Уровень соответствия',
+                    data: strategyData.compliance.values,
+                    backgroundColor: '#2ecc71'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Динамика compliance'
+                    }
+                }
+            }
+        });
+
+        // График распределения бюджета
+        const budgetCtx = document.getElementById('budgetChart').getContext('2d');
+        new Chart(budgetCtx, {
+            type: 'doughnut',
+            data: {
+                labels: strategyData.budget.labels,
+                datasets: [{
+                    data: strategyData.budget.values,
+                    backgroundColor: [
+                        '#3498db',
+                        '#e74c3c',
+                        '#f1c40f',
+                        '#9b59b6'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Распределение бюджета'
+                    }
+                }
+            }
+        });
+
+        // Добавляем новый график эффективности защиты
+        const effectivenessCtx = document.getElementById('effectivenessChart').getContext('2d');
+        new Chart(effectivenessCtx, {
+            type: 'radar',
+            data: {
+                labels: securityData.effectiveness.labels,
+                datasets: [{
+                    label: 'Эффективность защиты',
+                    data: securityData.effectiveness.values,
+                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                    borderColor: '#3498db',
+                    pointBackgroundColor: '#3498db'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Эффективность по направлениям'
+                    }
+                },
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
