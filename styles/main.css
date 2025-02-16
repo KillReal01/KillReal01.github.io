@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #2193b0;
+    --bg-color: #f5f6fa;
+    --text-color: #2c3e50;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg-color);
+    padding: 20px;
+    padding-left: 250px; /* Отступ для бокового меню */
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 70px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.metric-card {
+    text-align: center;
+}
+
+.metric-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 10px 0;
+}
+
+.metric-title {
+    color: #7f8c8d;
+    font-size: 14px;
+}
+
+.chart-container {
+    grid-column: span 2;
+}
+
+/* Новые стили для бокового меню */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 230px;
+    background: var(--primary-color);
+    color: white;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.sidebar-header {
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-links a:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateX(5px);
+}
+
+.nav-links svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Обновленные стили для карточек */
+.strategy-card {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+.strategy-card .metric-title {
+    color: rgba(255,255,255,0.8);
+}
+
+.strategy-card .metric-value {
+    color: white;
+}
+
+.metric-card svg {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
