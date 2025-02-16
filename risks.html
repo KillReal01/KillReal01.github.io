@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280">
+    <title>Анализ киберрисков</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/risks.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                <h1>Кибербезопасность</h1>
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="#admin" class="admin-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                Админ-панель
+            </a>
+            <a href="#infrastructure">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+                </svg>
+                Инфраструктура
+            </a>
+            <a href="#risks">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+                Риски
+            </a>
+            <a href="#strategy">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                </svg>
+                Стратегия
+            </a>
+            <a href="#reports">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+                Отчеты
+            </a>
+            <a href="#vendors">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                </svg>
+                Поставщики
+            </a>
+        </nav>
+    </aside>
+
+    <div class="risks-dashboard">
+        <!-- Ключевые метрики рисков -->
+        <div class="risk-metrics">
+            <div class="card metric-card">
+                <h3>Критические риски</h3>
+                <div class="metric-value risk-critical">12</div>
+                <div class="metric-trend up">+2 за месяц</div>
+            </div>
+            
+            <div class="card metric-card">
+                <h3>Средние риски</h3>
+                <div class="metric-value risk-medium">28</div>
+                <div class="metric-trend down">-5 за месяц</div>
+            </div>
+            
+            <div class="card metric-card">
+                <h3>Низкие риски</h3>
+                <div class="metric-value risk-low">45</div>
+                <div class="metric-trend stable">Без изменений</div>
+            </div>
+            
+            <div class="card metric-card">
+                <h3>Устранено рисков</h3>
+                <div class="metric-value">23</div>
+                <div class="metric-trend">За последний месяц</div>
+            </div>
+        </div>
+
+        <!-- Графики рисков -->
+        <div class="risk-charts">
+            <div class="card chart-container">
+                <h3>Динамика рисков по категориям</h3>
+                <canvas id="riskTrendsChart"></canvas>
+            </div>
+            
+            <div class="card chart-container">
+                <h3>Распределение рисков по активам</h3>
+                <canvas id="riskAssetsChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Таблица топ рисков -->
+        <div class="card risk-table-container">
+            <h3>Топ 5 критических рисков</h3>
+            <table class="risk-table">
+                <thead>
+                    <tr>
+                        <th>Риск</th>
+                        <th>Уровень</th>
+                        <th>Актив</th>
+                        <th>Статус</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Уязвимость в основном API</td>
+                        <td><span class="badge critical">Критический</span></td>
+                        <td>API Gateway</td>
+                        <td>В работе</td>
+                    </tr>
+                    <tr>
+                        <td>Устаревшие версии ПО</td>
+                        <td><span class="badge critical">Критический</span></td>
+                        <td>Сервера приложений</td>
+                        <td>Запланировано</td>
+                    </tr>
+                    <tr>
+                        <td>Отсутствие резервных копий</td>
+                        <td><span class="badge critical">Критический</span></td>
+                        <td>База данных</td>
+                        <td>В работе</td>
+                    </tr>
+                    <tr>
+                        <td>Слабая аутентификация</td>
+                        <td><span class="badge critical">Критический</span></td>
+                        <td>Веб-портал</td>
+                        <td>Новый</td>
+                    </tr>
+                    <tr>
+                        <td>DDoS уязвимость</td>
+                        <td><span class="badge critical">Критический</span></td>
+                        <td>Внешний периметр</td>
+                        <td>В работе</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Добавляем панель администратора -->
+        <div class="admin-panel">
+            <div class="admin-header">
+                <h2>Панель администратора</h2>
+                <button class="close-admin">&times;</button>
+            </div>
+            <div class="admin-content">
+                <div class="admin-section">
+                    <h3>Управление пользователями</h3>
+                    <button class="admin-btn">Добавить пользователя</button>
+                    <button class="admin-btn">Управление ролями</button>
+                </div>
+                <div class="admin-section">
+                    <h3>Настройки системы</h3>
+                    <button class="admin-btn">Конфигурация</button>
+                    <button class="admin-btn">Логи системы</button>
+                </div>
+                <div class="admin-section">
+                    <h3>Мониторинг</h3>
+                    <button class="admin-btn">Статус сервисов</button>
+                    <button class="admin-btn">Производительность</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/risks.js"></script>
+</body>
+</html> 

@@ -168,3 +168,49 @@ new Chart(effectivenessCtx, {
         }
     }
 });
+
+// Добавляем обработчики для админ-панели
+document.addEventListener('DOMContentLoaded', () => {
+    const adminLink = document.querySelector('.admin-link');
+    const adminPanel = document.querySelector('.admin-panel');
+    const closeAdmin = document.querySelector('.close-admin');
+
+    adminLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        adminPanel.classList.add('active');
+    });
+
+    closeAdmin.addEventListener('click', () => {
+        adminPanel.classList.remove('active');
+    });
+
+    // Закрытие панели при клике вне её
+    document.addEventListener('click', (e) => {
+        if (!adminPanel.contains(e.target) && 
+            !adminLink.contains(e.target) && 
+            adminPanel.classList.contains('active')) {
+            adminPanel.classList.remove('active');
+        }
+    });
+
+    // Предотвращение закрытия при клике внутри панели
+    adminPanel.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+
+    // Обработчики для кнопок админ-панели
+    const adminButtons = document.querySelectorAll('.admin-btn');
+    adminButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Здесь можно добавить логику для каждой кнопки
+            console.log('Нажата кнопка:', btn.textContent);
+        });
+    });
+
+    // Добавляем обработчик для перехода на страницу рисков
+    const risksLink = document.querySelector('a[href="#risks"]');
+    risksLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = 'risks.html';
+    });
+});

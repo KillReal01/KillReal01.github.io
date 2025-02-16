@@ -10,20 +10,25 @@
 <body>
     <aside class="sidebar">
         <div class="sidebar-header">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-            <h1>Кибербезопасность</h1>
+            <a href="index.html">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                <h1>Кибербезопасность</h1>
+            </a>
         </div>
         <nav class="nav-links">
-            <a href="#dashboard">
+            <a href="#admin" class="admin-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="3" width="7" height="7"/>
-                    <rect x="14" y="3" width="7" height="7"/>
-                    <rect x="14" y="14" width="7" height="7"/>
-                    <rect x="3" y="14" width="7" height="7"/>
+                    <path d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
-                Дашборд
+                Админ-панель
+            </a>
+            <a href="#infrastructure">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+                </svg>
+                Инфраструктура
             </a>
             <a href="#risks">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -42,6 +47,12 @@
                     <path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                 </svg>
                 Отчеты
+            </a>
+            <a href="#vendors">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                </svg>
+                Поставщики
             </a>
         </nav>
     </aside>
@@ -133,6 +144,31 @@
 
         <div class="card chart-container">
             <canvas id="effectivenessChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Добавляем панель администратора -->
+    <div class="admin-panel">
+        <div class="admin-header">
+            <h2>Панель администратора</h2>
+            <button class="close-admin">&times;</button>
+        </div>
+        <div class="admin-content">
+            <div class="admin-section">
+                <h3>Управление пользователями</h3>
+                <button class="admin-btn">Добавить пользователя</button>
+                <button class="admin-btn">Управление ролями</button>
+            </div>
+            <div class="admin-section">
+                <h3>Настройки системы</h3>
+                <button class="admin-btn">Конфигурация</button>
+                <button class="admin-btn">Логи системы</button>
+            </div>
+            <div class="admin-section">
+                <h3>Мониторинг</h3>
+                <button class="admin-btn">Статус сервисов</button>
+                <button class="admin-btn">Производительность</button>
+            </div>
         </div>
     </div>
 
