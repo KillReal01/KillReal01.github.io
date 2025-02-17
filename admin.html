@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280">
+    <title>Админ-панель</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/admin.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                <h1>Кибербезопасность</h1>
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="admin.html" class="admin-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                Админ-панель
+            </a>
+            <a href="infrastructure.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+                </svg>
+                Инфраструктура
+            </a>
+            <a href="risks.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+                Риски
+            </a>
+            <a href="strategy.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                </svg>
+                Стратегия
+            </a>
+            <a href="#reports">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
+                Отчеты
+            </a>
+            <a href="#vendors">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                </svg>
+                Поставщики
+            </a>
+        </nav>
+    </aside>
+
+    <div class="admin-container">
+        <!-- Секция анализа ландшафта киберугроз -->
+        <section class="admin-section">
+            <h2>Анализ ландшафта киберугроз</h2>
+            <div class="control-group">
+                <div class="control-item">
+                    <label>Глубина анализа (дней)</label>
+                    <input type="number" min="1" max="365" value="30">
+                </div>
+                <div class="control-item">
+                    <label>Источники данных</label>
+                    <select multiple>
+                        <option selected>OSINT</option>
+                        <option selected>Внутренние логи</option>
+                        <option selected>Threat Intelligence</option>
+                        <option>Dark Web мониторинг</option>
+                    </select>
+                </div>
+                <div class="control-item">
+                    <label>Приоритетные векторы атак</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" checked> Фишинг</label>
+                        <label><input type="checkbox" checked> Вредоносное ПО</label>
+                        <label><input type="checkbox" checked> DDoS</label>
+                        <label><input type="checkbox"> Supply Chain</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция анализа киберрисков -->
+        <section class="admin-section">
+            <h2>Анализ киберрисков</h2>
+            <div class="control-group">
+                <div class="control-item">
+                    <label>Методология оценки</label>
+                    <select>
+                        <option>FAIR</option>
+                        <option selected>ISO 27005</option>
+                        <option>NIST CSF</option>
+                    </select>
+                </div>
+                <div class="control-item">
+                    <label>Порог критичности (млн ₽)</label>
+                    <input type="number" min="1" value="10">
+                </div>
+                <div class="control-item">
+                    <label>Активы для анализа</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" checked> Инфраструктура</label>
+                        <label><input type="checkbox" checked> Данные</label>
+                        <label><input type="checkbox" checked> Репутация</label>
+                        <label><input type="checkbox"> Интеллектуальная собственность</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция анализа финансов -->
+        <section class="admin-section">
+            <h2>Финансовый анализ</h2>
+            <div class="control-group">
+                <div class="control-item">
+                    <label>Бюджет на кибербезопасность (млн ₽/год)</label>
+                    <input type="number" min="1" value="50">
+                </div>
+                <div class="control-item">
+                    <label>Распределение бюджета</label>
+                    <div class="slider-group">
+                        <label>Превентивные меры <input type="range" min="0" max="100" value="40">40%</label>
+                        <label>Мониторинг <input type="range" min="0" max="100" value="30">30%</label>
+                        <label>Реагирование <input type="range" min="0" max="100" value="30">30%</label>
+                    </div>
+                </div>
+                <div class="control-item">
+                    <label>ROI порог для инвестиций (%)</label>
+                    <input type="number" min="0" max="1000" value="150">
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция управляющих воздействий -->
+        <section class="admin-section">
+            <h2>Управляющие воздействия</h2>
+            <div class="control-group">
+                <div class="control-item">
+                    <label>Автоматические действия</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" checked> Блокировка угроз</label>
+                        <label><input type="checkbox" checked> Карантин файлов</label>
+                        <label><input type="checkbox"> Отключение сегментов</label>
+                        <label><input type="checkbox"> Сброс учетных данных</label>
+                    </div>
+                </div>
+                <div class="control-item">
+                    <label>Уровень автоматизации</label>
+                    <select>
+                        <option>Только мониторинг</option>
+                        <option selected>Требуется подтверждение</option>
+                        <option>Полная автоматизация</option>
+                    </select>
+                </div>
+                <div class="control-item actions">
+                    <button class="btn-primary">Применить настройки</button>
+                    <button class="btn-secondary">Сбросить</button>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html> 
