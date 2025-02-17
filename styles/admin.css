@@ -60,7 +60,7 @@
 
 .control-group {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 2fr;
     gap: 2rem;
 }
 
@@ -120,15 +120,33 @@
     gap: 1rem;
 }
 
-.slider-group label {
+.slider-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    align-items: center;
+    gap: 1rem;
+}
+
+.slider-label {
+    color: #4a5568;
+    font-size: 0.9rem;
+}
+
+.slider-control {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-.slider-group input[type="range"] {
+.slider-control input[type="range"] {
     flex: 1;
     accent-color: #4a90e2;
+}
+
+.slider-value {
+    min-width: 3em;
+    color: #4a5568;
+    font-size: 0.9rem;
 }
 
 .actions {
@@ -184,4 +202,257 @@ select:focus {
 .checkbox-group input[type="checkbox"]:checked + span {
     color: #4a90e2;
     font-weight: 500;
+}
+
+/* Стили для действий */
+.action-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.5rem;
+}
+
+.action-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.action-title {
+    font-weight: 500;
+    color: #2d3748;
+}
+
+.action-desc {
+    font-size: 0.85rem;
+    color: #718096;
+}
+
+.action-status {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    background: #e2e8f0;
+    color: #4a5568;
+}
+
+.action-item input[type="checkbox"]:checked ~ .action-status {
+    background: #c6f6d5;
+    color: #2f855a;
+}
+
+/* Стили для информации об автоматизации */
+.automation-level {
+    margin-bottom: 1rem;
+}
+
+.automation-info {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+.info-value {
+    font-weight: 500;
+    color: #2d3748;
+}
+
+/* Стили для журнала действий */
+.action-log {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 1rem;
+    overflow-y: auto;
+}
+
+.log-entry {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem;
+    border-bottom: 1px solid #f7fafc;
+}
+
+.log-time {
+    color: #718096;
+    font-size: 0.85rem;
+    font-family: monospace;
+}
+
+.log-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-left: 0.5rem;
+}
+
+.log-type {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-weight: 500;
+    min-width: 100px;
+    text-align: center;
+}
+
+.log-type.success {
+    background: #c6f6d5;
+    color: #2f855a;
+}
+
+.log-type.warning {
+    background: #feebc8;
+    color: #c05621;
+}
+
+.log-type.info {
+    background: #e2e8f0;
+    color: #4a5568;
+}
+
+.log-type.error {
+    background: #fed7d7;
+    color: #c53030;
+}
+
+.log-desc {
+    color: #4a5568;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.global-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    padding: 1rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e1e4e8;
+    margin-top: 1rem;
+}
+
+.global-actions .btn-primary,
+.global-actions .btn-secondary {
+    font-size: 1rem;
+    padding: 1rem 2rem;
+}
+
+.actions-widget {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.action-toggle {
+    position: relative;
+}
+
+.action-toggle input {
+    position: absolute;
+    opacity: 0;
+}
+
+.action-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.action-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.action-icon {
+    font-size: 1.5rem;
+}
+
+.action-status {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #fc8181;
+    transition: background-color 0.2s ease;
+}
+
+.action-toggle input:checked + .action-card .action-status {
+    background: #68d391;
+}
+
+.action-info h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #2d3748;
+}
+
+.action-info p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #718096;
+}
+
+.action-toggle input:checked + .action-card {
+    border-color: #68d391;
+    box-shadow: 0 0 0 1px #68d391;
+}
+
+.action-toggle input:not(:checked) + .action-card {
+    border-color: #fc8181;
+    box-shadow: 0 0 0 1px #fc8181;
+}
+
+.logs-container {
+    height: 100%;
+}
+
+.action-log {
+    height: calc(100% - 2rem);
+    margin: 0;
+}
+
+.three-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.control-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
 } 

@@ -8,17 +8,18 @@
     <link rel="stylesheet" href="styles/admin.css">
 </head>
 <body>
+    <!-- Сайдбар -->
     <aside class="sidebar">
         <div class="sidebar-header">
             <a href="index.html">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                 </svg>
-                <h1>Кибербезопасность</h1>
+                <h1>GR3B0B3M4S3N</h1>
             </a>
         </div>
         <nav class="nav-links">
-            <a href="admin.html" class="admin-link">
+            <a href="admin.html" class="active">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
@@ -42,13 +43,7 @@
                 </svg>
                 Стратегия
             </a>
-            <a href="#reports">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                </svg>
-                Отчеты
-            </a>
-            <a href="#vendors">
+            <a href="vendor.html">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                 </svg>
@@ -56,24 +51,26 @@
             </a>
         </nav>
     </aside>
-
+    
+    <!-- Основной контент -->
     <div class="admin-container">
         <!-- Секция анализа ландшафта киберугроз -->
         <section class="admin-section">
             <h2>Анализ ландшафта киберугроз</h2>
-            <div class="control-group">
+            <div class="control-group three-columns">
                 <div class="control-item">
                     <label>Глубина анализа (дней)</label>
                     <input type="number" min="1" max="365" value="30">
                 </div>
                 <div class="control-item">
                     <label>Источники данных</label>
-                    <select multiple>
-                        <option selected>OSINT</option>
-                        <option selected>Внутренние логи</option>
-                        <option selected>Threat Intelligence</option>
-                        <option>Dark Web мониторинг</option>
-                    </select>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" checked> OSINT</label>
+                        <label><input type="checkbox" checked> SIEM</label>
+                        <label><input type="checkbox" checked> Threat Intelligence</label>
+                        <label><input type="checkbox"> Dark Web мониторинг</label>
+                        <label><input type="checkbox"> Социальные сети</label>
+                    </div>
                 </div>
                 <div class="control-item">
                     <label>Приоритетные векторы атак</label>
@@ -90,7 +87,7 @@
         <!-- Секция анализа киберрисков -->
         <section class="admin-section">
             <h2>Анализ киберрисков</h2>
-            <div class="control-group">
+            <div class="control-group three-columns">
                 <div class="control-item">
                     <label>Методология оценки</label>
                     <select>
@@ -118,17 +115,35 @@
         <!-- Секция анализа финансов -->
         <section class="admin-section">
             <h2>Финансовый анализ</h2>
-            <div class="control-group">
+            <div class="control-group three-columns">
                 <div class="control-item">
-                    <label>Бюджет на кибербезопасность (млн ₽/год)</label>
+                    <label>Бюджет на GR3B0B3M4S3N (млн ₽/год)</label>
                     <input type="number" min="1" value="50">
                 </div>
                 <div class="control-item">
                     <label>Распределение бюджета</label>
                     <div class="slider-group">
-                        <label>Превентивные меры <input type="range" min="0" max="100" value="40">40%</label>
-                        <label>Мониторинг <input type="range" min="0" max="100" value="30">30%</label>
-                        <label>Реагирование <input type="range" min="0" max="100" value="30">30%</label>
+                        <div class="slider-row">
+                            <span class="slider-label">Превентивные меры</span>
+                            <div class="slider-control">
+                                <input type="range" min="0" max="100" value="40">
+                                <span class="slider-value">40%</span>
+                            </div>
+                        </div>
+                        <div class="slider-row">
+                            <span class="slider-label">Мониторинг</span>
+                            <div class="slider-control">
+                                <input type="range" min="0" max="100" value="30">
+                                <span class="slider-value">30%</span>
+                            </div>
+                        </div>
+                        <div class="slider-row">
+                            <span class="slider-label">Реагирование</span>
+                            <div class="slider-control">
+                                <input type="range" min="0" max="100" value="30">
+                                <span class="slider-value">30%</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="control-item">
@@ -143,28 +158,128 @@
             <h2>Управляющие воздействия</h2>
             <div class="control-group">
                 <div class="control-item">
-                    <label>Автоматические действия</label>
-                    <div class="checkbox-group">
-                        <label><input type="checkbox" checked> Блокировка угроз</label>
-                        <label><input type="checkbox" checked> Карантин файлов</label>
-                        <label><input type="checkbox"> Отключение сегментов</label>
-                        <label><input type="checkbox"> Сброс учетных данных</label>
+                    <label>Активные воздействия</label>
+                    <div class="actions-widget">
+                        <div class="action-toggle">
+                            <input type="checkbox" id="action1" checked>
+                            <label for="action1" class="action-card">
+                                <div class="action-header">
+                                    <span class="action-icon">🛡️</span>
+                                    <span class="action-status"></span>
+                                </div>
+                                <div class="action-info">
+                                    <h3>Блокировка угроз</h3>
+                                    <p>Автоматическая блокировка подозрительного трафика</p>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="action-toggle">
+                            <input type="checkbox" id="action2" checked>
+                            <label for="action2" class="action-card">
+                                <div class="action-header">
+                                    <span class="action-icon">🔒</span>
+                                    <span class="action-status"></span>
+                                </div>
+                                <div class="action-info">
+                                    <h3>Карантин файлов</h3>
+                                    <p>Изоляция подозрительных файлов</p>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="action-toggle">
+                            <input type="checkbox" id="action3">
+                            <label for="action3" class="action-card">
+                                <div class="action-header">
+                                    <span class="action-icon">🔌</span>
+                                    <span class="action-status"></span>
+                                </div>
+                                <div class="action-info">
+                                    <h3>Отключение сегментов</h3>
+                                    <p>Изоляция скомпрометированных сегментов</p>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="action-toggle">
+                            <input type="checkbox" id="action4">
+                            <label for="action4" class="action-card">
+                                <div class="action-header">
+                                    <span class="action-icon">🔑</span>
+                                    <span class="action-status"></span>
+                                </div>
+                                <div class="action-info">
+                                    <h3>Сброс учетных данных</h3>
+                                    <p>Принудительная смена паролей</p>
+                                </div>
+                            </label>
+                        </div>
                     </div>
                 </div>
-                <div class="control-item">
-                    <label>Уровень автоматизации</label>
-                    <select>
-                        <option>Только мониторинг</option>
-                        <option selected>Требуется подтверждение</option>
-                        <option>Полная автоматизация</option>
-                    </select>
-                </div>
-                <div class="control-item actions">
-                    <button class="btn-primary">Применить настройки</button>
-                    <button class="btn-secondary">Сбросить</button>
+
+                <div class="control-item logs-container">
+                    <label>Журнал действий</label>
+                    <div class="action-log">
+                        <div class="log-entry">
+                            <div class="log-time">2024-03-19 14:32:15.342</div>
+                            <div class="log-content">
+                                <span class="log-type success">Блокировка</span>
+                                <span class="log-desc">Заблокирован подозрительный IP-адрес 192.168.1.100</span>
+                            </div>
+                        </div>
+                        <div class="log-entry">
+                            <div class="log-time">2024-03-19 14:28:42.127</div>
+                            <div class="log-content">
+                                <span class="log-type warning">Карантин</span>
+                                <span class="log-desc">Файл suspicious_file.exe помещен в карантин</span>
+                            </div>
+                        </div>
+                        <div class="log-entry">
+                            <div class="log-time">2024-03-19 14:25:18.901</div>
+                            <div class="log-content">
+                                <span class="log-type error">Ошибка</span>
+                                <span class="log-desc">Не удалось подключиться к серверу обновлений: timeout</span>
+                            </div>
+                        </div>
+                        <div class="log-entry">
+                            <div class="log-time">2024-03-19 14:20:33.567</div>
+                            <div class="log-content">
+                                <span class="log-type success">Обновление</span>
+                                <span class="log-desc">Установлены новые сигнатуры вредоносного ПО (версия 2.14.5)</span>
+                            </div>
+                        </div>
+                        <div class="log-entry">
+                            <div class="log-time">2024-03-19 14:15:03.891</div>
+                            <div class="log-content">
+                                <span class="log-type info">Мониторинг</span>
+                                <span class="log-desc">Обнаружена подозрительная активность в сегменте сети DMZ</span>
+                            </div>
+                        </div>
+                        <div class="log-entry">
+                            <div class="log-time">2024-03-19 14:12:55.233</div>
+                            <div class="log-content">
+                                <span class="log-type warning">Доступ</span>
+                                <span class="log-desc">Множественные попытки входа с IP 203.0.113.42</span>
+                            </div>
+                        </div>
+                        <div class="log-entry">
+                            <div class="log-time">2024-03-19 14:05:22.789</div>
+                            <div class="log-content">
+                                <span class="log-type info">Система</span>
+                                <span class="log-desc">Запущена проверка целостности файловой системы</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- Кнопки действий -->
+        <div class="global-actions">
+            <button class="btn-primary">Сохранить изменения</button>
+            <button class="btn-secondary">Отменить изменения</button>
+        </div>
     </div>
 </body>
 </html> 

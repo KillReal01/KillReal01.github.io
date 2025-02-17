@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280">
+    <title>Поставщики - GR3B0B3M4S3N</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/vendor.css">
+</head>
+<body>
+    <!-- Сайдбар -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                <h1>GR3B0B3M4S3N</h1>
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="admin.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                Админ-панель
+            </a>
+            <a href="infrastructure.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+                </svg>
+                Инфраструктура
+            </a>
+            <a href="risks.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+                Риски
+            </a>
+            <a href="strategy.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                </svg>
+                Стратегия
+            </a>
+            <a href="vendor.html">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                </svg>
+                Поставщик
+            </a>
+        </nav>
+    </aside>
+    
+    <!-- Основной контент -->
+    <div class="vendor-container">     
+        <!-- Секция настроек подключения -->
+        <section class="admin-section">
+            <h2>Параметры подключения</h2>
+            <div class="control-group three-columns">
+                <div class="control-item">
+                    <label>Адрес сервера</label>
+                    <input type="text" value="https://aggregator.security.com" placeholder="URL сервера">
+                    <div class="connection-status success">
+                        <span class="status-dot"></span>
+                        Подключено
+                    </div>
+                </div>
+                <div class="control-item">
+                    <label>Авторизация</label>
+                    <input type="text" placeholder="API ключ" value="••••••••••••••••">
+                    <button class="btn-secondary">Обновить ключ</button>
+                </div>
+                <div class="control-item">
+                    <label>Интервал отправки</label>
+                    <select>
+                        <option>Каждые 5 минут</option>
+                        <option selected>Каждые 15 минут</option>
+                        <option>Каждые 30 минут</option>
+                        <option>Каждый час</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция отправляемых данных -->
+        <section class="admin-section">
+            <h2>Отправляемые данные</h2>
+            <div class="control-group three-columns">
+                <div class="control-item">
+                    <label>Системная информация</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" checked> Версии ОС</label>
+                        <label><input type="checkbox" checked> Версии ПО</label>
+                        <label><input type="checkbox" checked> Патчи безопасности</label>
+                        <label><input type="checkbox"> Конфигурации</label>
+                        <label><input type="checkbox"> Список процессов</label>
+                    </div>
+                </div>
+                <div class="control-item">
+                    <label>Метрики безопасности</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" checked> Статус антивируса</label>
+                        <label><input type="checkbox" checked> Файерволл</label>
+                        <label><input type="checkbox" checked> IDS/IPS</label>
+                        <label><input type="checkbox"> Логи доступа</label>
+                        <label><input type="checkbox"> Сетевой трафик</label>
+                    </div>
+                </div>
+                <div class="control-item">
+                    <label>Статистика инцидентов</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" checked> Количество атак</label>
+                        <label><input type="checkbox" checked> Типы угроз</label>
+                        <label><input type="checkbox"> Источники атак</label>
+                        <label><input type="checkbox"> Время реакции</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция журнала синхронизации -->
+        <section class="admin-section">
+            <h2>Журнал синхронизации</h2>
+            <div class="sync-log">
+                <div class="log-entry">
+                    <div class="log-time">2024-03-19 15:00:15.342</div>
+                    <div class="log-content">
+                        <span class="log-type success">Успешно</span>
+                        <span class="log-desc">Отправлено 150 метрик, получено 12 обновлений</span>
+                    </div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-time">2024-03-19 14:45:12.127</div>
+                    <div class="log-content">
+                        <span class="log-type success">Успешно</span>
+                        <span class="log-desc">Отправлено 148 метрик, получено 5 обновлений</span>
+                    </div>
+                </div>
+                <div class="log-entry">
+                    <div class="log-time">2024-03-19 14:30:08.891</div>
+                    <div class="log-content">
+                        <span class="log-type warning">Частично</span>
+                        <span class="log-desc">Отправлено 145 метрик, 3 метрики пропущены</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Кнопки действий -->
+        <div class="global-actions">
+            <button class="btn-secondary">Тестовая отправка</button>
+            <button class="btn-primary">Сохранить настройки</button>
+        </div>
+    </div>
+</body>
+</html> 
