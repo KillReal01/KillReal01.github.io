@@ -273,3 +273,33 @@ body {
 .admin-link:hover {
     background: rgba(255,255,255,0.1);
 }
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.charts-grid .chart-container {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    min-height: 400px;
+    width: 100%; /* Гарантируем полную ширину */
+}
+
+.charts-grid .chart-container h3 {
+    margin-bottom: 1rem;
+    color: #4a5568;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.charts-grid .chart-container:hover {
+    transform: translateY(-5px);
+}

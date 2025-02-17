@@ -120,27 +120,30 @@
         </div>
     </div>
 
-        <!-- Графики -->
-        <div class="card chart-container">
-            <canvas id="riskChart"></canvas>
-        </div>
+    <!-- Отдельный контейнер для графиков -->
+    <div class="charts-grid">
 
         <div class="card chart-container">
-            <canvas id="budgetChart"></canvas>
-        </div>
-
-        <div class="card chart-container">
-            <canvas id="complianceChart"></canvas>
-        </div>
-
-        <div class="card">
+            <h3>Типы инцидентов</h3>
             <canvas id="incidentsPieChart"></canvas>
         </div>
 
         <div class="card chart-container">
-            <canvas id="effectivenessChart"></canvas>
+            <h3>Распределение бюджета</h3>
+            <canvas id="budgetChart"></canvas>
         </div>
-    
+
+        <div class="card chart-container">
+            <h3>Динамика рисков</h3>
+            <canvas id="riskChart"></canvas>
+        </div>
+
+        <div class="card chart-container">
+            <h3>Соответствие нормам</h3>
+            <canvas id="complianceChart"></canvas>
+        </div>
+
+    </div>
 
     <script src="js/charts.js"></script>
 </body>
