@@ -1,8 +1,8 @@
 .map-container {
     position: relative;
-    width: 800px;
+    /* width: 800px; */
     height: 600px;
-    margin: 50px auto;
+    /* margin: 50px auto; */
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -30,9 +30,12 @@
 }
 
 .controls {
-    position: fixed;
-    right: 20px;
+    position: absolute;
     bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
     z-index: 1000;
 }
 
@@ -125,18 +128,61 @@
 
 .assets-container {
     pointer-events: all;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.assets-container:hover {
+    opacity: 0.9;
 }
 
 .assets-list {
-    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .assets-list text {
-    fill: #333;
-    font-size: 12px;
+    fill: #2c3e50;
+    font-size: 11px;
+    font-family: Arial, sans-serif;
     pointer-events: none;
+}
+
+.assets-list g {
+    transition: opacity 0.2s ease;
+}
+
+.assets-list g:hover {
+    opacity: 0.7;
 }
 
 .assets-list.active {
     display: block;
+    opacity: 1;
+    pointer-events: all;
+}
+
+.services-container {
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.services-list {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.services-list.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.services-list g {
+    transition: opacity 0.2s ease;
+}
+
+.services-list g:hover {
+    opacity: 0.7;
 } 
