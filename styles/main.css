@@ -128,16 +128,59 @@ body {
 
 /* Обновленные стили для карточек */
 .strategy-card {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
 }
 
+/* Финансовые метрики - зеленые оттенки */
+.strategy-card:nth-child(1) {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.strategy-card:nth-child(2) {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+/* Метрики эффективности - синие оттенки */
+.strategy-card:nth-child(3) {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+/* Compliance - фиолетовые оттенки */
+.strategy-card:nth-child(4) {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+/* ROI - оранжевые оттенки */
+.strategy-card:nth-child(5) {
+    background: linear-gradient(135deg, #f1c40f, #f39c12);
+}
+
+/* Время реагирования - красные оттенки */
+.strategy-card:nth-child(6) {
+    background: linear-gradient(135deg, #e67e22, #d35400);
+}
+
+/* Обучение - бирюзовые оттенки */
+.strategy-card:nth-child(7) {
+    background: linear-gradient(135deg, #1abc9c, #16a085);
+}
+
+/* Безопасность - серо-синие оттенки */
+.strategy-card:nth-child(8) {
+    background: linear-gradient(135deg, #34495e, #2c3e50);
+}
+
+/* Общие стили для текста в карточках */
 .strategy-card .metric-title {
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .strategy-card .metric-value {
     color: white;
+}
+
+.strategy-card svg {
+    stroke: white;
 }
 
 .metric-card svg {

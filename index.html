@@ -63,19 +63,18 @@
 
         <div class="card strategy-card metric-card">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/>
-                <path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/>
-            </svg>
-            <div class="metric-title">ROI безопасности</div>
-            <div class="metric-value">267%</div>
-        </div>
-
-        <div class="card metric-card">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
             <div class="metric-title">Финансовые потери</div>
             <div class="metric-value">₽15.2M</div>
+        </div>
+
+        <div class="card strategy-card metric-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+            <div class="metric-title">Эффективность защиты</div>
+            <div class="metric-value">94.2%</div>
         </div>
 
         <div class="card strategy-card metric-card">
@@ -87,7 +86,16 @@
         </div>
 
         <!-- Операционные метрики -->
-        <div class="card metric-card">
+        <div class="card strategy-card metric-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/>
+                <path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/>
+            </svg>
+            <div class="metric-title">ROI безопасности</div>
+            <div class="metric-value">267%</div>
+        </div>
+        
+        <div class="card strategy-card metric-card">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
@@ -95,7 +103,7 @@
             <div class="metric-value">4.2ч</div>
         </div>
 
-        <div class="card metric-card">
+        <div class="card strategy-card metric-card">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
             </svg>
@@ -105,19 +113,12 @@
 
         <div class="card strategy-card metric-card">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
-            </svg>
-            <div class="metric-title">Эффективность защиты</div>
-            <div class="metric-value">94.2%</div>
-        </div>
-
-        <div class="card metric-card">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
             </svg>
             <div class="metric-title">Предотвращенные атаки</div>
             <div class="metric-value">142</div>
         </div>
+    </div>
 
         <!-- Графики -->
         <div class="card chart-container">
@@ -139,7 +140,7 @@
         <div class="card chart-container">
             <canvas id="effectivenessChart"></canvas>
         </div>
-    </div>
+    
 
     <script src="js/charts.js"></script>
 </body>
